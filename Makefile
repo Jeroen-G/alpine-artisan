@@ -21,7 +21,7 @@ show-commands:
 
 # Variables
 PWD := $(dir $(MAKEPATH))
-PROJECTNAME=jeroen-g/alpine-artisan
+PROJECTNAME=jeroeng/alpine-artisan
 TAG=UNDEF
 
 build:

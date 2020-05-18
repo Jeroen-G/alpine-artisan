@@ -12,6 +12,7 @@ RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/co
         php7-intl \
         php7-json \
         php7-mbstring \
+        php7-pcntl \
         php7-pdo_mysql \
         php7-redis \
         php7-session \
@@ -27,13 +28,13 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 ONBUILD COPY --chown=php:nginx . /www
 
 # Set vendor aside for performance
-ONBUILD COPY --chown=php:nginx ./vendor /tmp/vendor
+# ONBUILD COPY --chown=php:nginx ./vendor /tmp/vendor
 
-ONBUILD RUN chown -R php:nginx /www \
-    && chmod -R 555 /www \
-    && find /www -type f -exec chmod -R 444 {} \; \
-    && find /www/storage /www/bootstrap/cache -type d -exec chmod -R 755 {} \; \
-    && find /www/storage /www/bootstrap/cache -type f -exec chmod -R 644 {} \;
+# ONBUILD RUN chown -R php:nginx /www \
+#     && chmod -R 555 /www \
+#     && find /www -type f -exec chmod -R 444 {} \; \
+#     && find /www/storage /www/bootstrap/cache -type d -exec chmod -R 755 {} \; \
+#     && find /www/storage /www/bootstrap/cache -type f -exec chmod -R 644 {} \;
 
-# Put vendor back
-ONBUILD RUN mv /tmp/vendor /www/vendor
+# # Put vendor back
+# ONBUILD RUN mv /tmp/vendor /www/vendor
