@@ -1,0 +1,38 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    - cron:  '0 0 1 * *'
+
+jobs:
+  build:
+    name: CI/CD tag
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tag: [ web7.3 ]
+    env:
+      DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+      TAG: ${{ matrix.tag }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build the Docker image
+        run: make build TAG=$TAG
+
+      - name: Start an instance of the container
+        run: make start TAG=$TAG
+
+      - name: Waiting for the healthcheck
+        run: sleep 15
+
+      - name: Testing image health
+        run: make test TAG=$TAG
+
+      - name: Publishing new image
+        if: ${{ success() }}
+        run: docker login -u="jeroeng" -p="$DOCKER_TOKEN" && docker push jeroeng/alpine-artisan
