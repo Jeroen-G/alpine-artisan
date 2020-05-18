@@ -1,0 +1,20 @@
+language: minimal
+
+matrix:
+  include:
+    - env: TAG=7.3
+
+services:
+  - docker
+
+script:
+  - make build TAG=$(printenv TAG)
+  - make run TAG=$(printenv TAG)
+  - sleep 15 # Wait for the docker health check to complete
+  - make test TAG=$(printenv TAG)
+
+after_success:
+  - if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" ]]; then
+    docker login -u="jeroeng" -p="$DOCKER_PASSWORD";
+    docker push existenz/webstack;
+    fi

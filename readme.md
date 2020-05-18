@@ -2,6 +2,7 @@
 
 [![Docker Pulls][ico-pulls]][link-docker-hub]
 [![Docker Cloud Build Status][ico-build]][link-docker-hub]
+[![Tests][ico-travis]][link-travis]
 [![Docker Image Size (latest by date)][ico-size]][link-docker-hub]
 
 A set of lightweight Docker images created with Laravel in mind, but work just as fine for other applications.
@@ -90,6 +91,8 @@ REDIS_PORT=6379
 Clone this repository and run `make` to see which commands are there to help you. every command requires a `TAG=` parameter, which is the Docker image you want to build, for example: `make build TAG=web7.3`.
 
 [link-docker-hub]: https://hub.docker.com/r/jeroeng/alpine-artisan
+[link-travis]: https://travis-ci.com/github/Jeroen-G/alpine-artisan
 [ico-pulls]: https://img.shields.io/docker/pulls/jeroeng/alpine-artisan?style=flat-square
 [ico-build]: https://img.shields.io/docker/cloud/build/jeroeng/alpine-artisan?style=flat-square
+[ico-travis]: https://img.shields.io/travis/Jeroen-G/alpine-artisan?label=tests&style=flat-square
 [ico-size]: https://img.shields.io/docker/image-size/jeroeng/alpine-artisan?style=flat-square
