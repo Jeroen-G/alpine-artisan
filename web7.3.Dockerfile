@@ -7,19 +7,22 @@ RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/co
         php7-dom \
         php7-exif \
         php7-fileinfo \
-        php7-zip \
         php7-gd \
         php7-iconv \
         php7-intl \
         php7-json \
         php7-mbstring \
         php7-pdo_mysql \
-        php7-tokenizer \
+        php7-redis \
         php7-session \
+        php7-tokenizer \
+        php7-zip \
     && rm -rf /var/cache/apk/*
 
 # See https://github.com/docker-library/php/issues/240
 ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
+
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 ONBUILD COPY --chown=php:nginx . /www
 
@@ -34,17 +37,3 @@ ONBUILD RUN chown -R php:nginx /www \
 
 # Put vendor back
 ONBUILD RUN mv /tmp/vendor /www/vendor
-
-ARG USERID=1000
-ARG GROUPID=1000
-
-# RUN apk -U add \
-#     shadow \
-#     php-phar \
-#     php7-pecl-xdebug \
-#     && usermod -u ${USERID} php \
-#     && groupmod -o -g ${GROUPID} php \
-#     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer \
-#     && rm -rf /var/cache/apk/*
-
-COPY ./files/dev/xdebug.ini /etc/php7/conf.d/xdebug.ini
