@@ -2,19 +2,21 @@
 A set of lightweight Docker images created with Laravel in mind, but work just as fine for other applications.
 At the basis lies Alpine Linux and [Docker-Webstack](https://github.com/eXistenZNL/Docker-Webstack) which keeps the images that you pull in very small but usable.
 
-## Targets
-Every Docker image comes with a difference between development and production. To build the right image you have to provide either a `dev` or `prod` target.
+## Installation
+In the folder of your application create two files: `docker-compose.yml` and `Dockerfile` (note that the latter has no extension).
 
-## Docker-compose
+### Docker-compose.yml
 ```yaml
 services:
   app:
-    image: jeroen-g/alpine-artisan:web7.4
-    build:
-    target: dev
-    args:
-    USERID: ${USERID:-1000}
-    GROUPID: ${GROUPID:-1000}
+    build: .
+    ports:
+      - 80:80
+```
+
+### Dockerfile
+```Dockerfile
+FROM jeroen-g/alpine-artisan:web7.3
 ```
 
 ## Docker images
@@ -24,25 +26,12 @@ Sets you up with Alpine Linux, PHP-FPM, Nginx. The aim is to support the latest 
 
 To use PHP 7.3 use:
 ```
-FROM jeroen-g/alpine-artisan:web7.3
+FROM jeroeng/alpine-artisan:web7.3
 ```
 
 For PHP 7.4:
 ```
-FROM jeroen-g/alpine-artisan:web7.4
-```
-
-### Horizon
-Laravel Horizon requires a slightly different container than your web application. Again, the aim is to support the latest two PHP versions.
-
-To use PHP 7.3 use:
-```
-FROM jeroen-g/alpine-artisan:horizon7.3
-```
-
-For PHP 7.4:
-```
-FROM jeroen-g/alpine-artisan:horizon7.4
+FROM jeroeng/alpine-artisan:web7.4
 ```
 
 ## Contributing
