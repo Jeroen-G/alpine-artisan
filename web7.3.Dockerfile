@@ -15,6 +15,7 @@ RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/co
         php7-pcntl \
         php7-pdo_mysql \
         php7-phar \
+        php7-posix \
         php7-redis \
         php7-session \
         php7-tokenizer \
