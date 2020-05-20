@@ -19,6 +19,8 @@ RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/co
         php7-redis \
         php7-session \
         php7-tokenizer \
+        php7-xml \
+        php7-xmlwriter \
         php7-zip \
     && rm -rf /var/cache/apk/*
 
