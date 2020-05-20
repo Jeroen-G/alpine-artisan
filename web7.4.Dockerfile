@@ -3,6 +3,7 @@ FROM existenz/webstack:7.4-codecasts
 RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted gnu-libiconv; \
     apk -U --no-cache add \
         php \
+        php7-bcmath \
         php-curl \
         php-dom \
         php-exif \
