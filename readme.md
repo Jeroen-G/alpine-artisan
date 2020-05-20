@@ -42,10 +42,10 @@ services:
   db:
     image: percona:5.7
       environment:
-        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-secret}
-        - MYSQL_DATABASE=my_database
-        - MYSQL_USER=jeroen
-        - MYSQL_PASSWORD=${MYSQL_ROOT_PASSWORD:-secret}
+        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-secret}
+        MYSQL_DATABASE: my_database
+        MYSQL_USER: jeroen
+        MYSQL_PASSWORD: ${MYSQL_ROOT_PASSWORD:-secret}
       volumes:
         - mysql-data:/var/lib/mysql:rw
       ports:
@@ -86,6 +86,18 @@ REDIS_HOST=queue
 REDIS_PASSWORD=
 REDIS_PORT=6379
 ```
+
+### Standalone Laravel Horizon
+Laravel Horizon requires a daemon in order to work. If you want to have Laravel Horizon running continuously you may start a new container based on the app one. The image name, `test_app` is unique for your application, `test` is the name of the folder, `app` is the name of the app container. After a `docker-compose build` this image name should be listed when you run `docker images`.
+
+```yaml
+services:
+  horizon:
+    image: test_app
+    command: php artisan horizon
+```
+
+Note: this only runs horizon locally using docker-compose. As soon as you want to host horizon in a container in the cloud, e.g. using kubernetes, you will have to build a separate image.
 
 ## Contributing
 Clone this repository and run `make` to see which commands are there to help you. every command requires a `TAG=` parameter, which is the Docker image you want to build, for example: `make build TAG=web7.3`.
