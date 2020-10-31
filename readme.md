@@ -22,6 +22,8 @@ services:
     build: .
     ports:
       - 80:80
+    volumes:
+      - .:/www:delegated
 ```
 
 ### Dockerfile
