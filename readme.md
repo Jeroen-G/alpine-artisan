@@ -8,7 +8,7 @@
 A set of lightweight Docker images created with Laravel in mind, but work just as fine for other applications.
 At the basis lies Alpine Linux and the amazing [Docker-Webstack](https://github.com/eXistenZNL/Docker-Webstack) which keeps the images that you pull in very small but usable.
 
-The image sets you up with Alpine Linux, PHP-FPM, Nginx. Currently there is an image for PHP 7.3 and 7.4 available. The 7.4 has to be based on the [codecasts](https://github.com/codecasts/php-alpine) repository, meaning that the set of installed PHP extensions may differ from the set installed in the 7.3 image.
+The image sets you up with Alpine Linux, PHP-FPM, Nginx. Currently there is an image for PHP 7.3 7.4 and 8.0 available.
 
 ## Installation
 In the folder of your application create two files: `docker-compose.yml` and `Dockerfile` (note that the latter has no extension). On the command line, run `docker compose up -d --build` and view your containerized application at `localhost:80`.
