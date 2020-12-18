@@ -1,6 +1,7 @@
 name: CI/CD
 
 on:
+  workflow_dispatch:
   push:
     branches: [ master ]
   pull_request:
@@ -11,6 +12,7 @@ on:
 jobs:
   build:
     name: CI/CD tag
+    continue-on-error: true
     runs-on: ubuntu-latest
     strategy:
       matrix:
