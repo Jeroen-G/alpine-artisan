@@ -37,4 +37,4 @@ jobs:
 
       - name: Publishing new image
         if: ${{ success() }}
-        run: docker login -u="jeroeng" -p="$DOCKER_TOKEN" && docker push jeroeng/alpine-artisan
+        run: docker login -u="jeroeng" -p="$DOCKER_TOKEN" && docker push jeroeng/alpine-artisan:$TAG
