@@ -2,25 +2,25 @@ FROM existenz/webstack:8.1
 
 RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted gnu-libiconv; \
     apk -U --no-cache add \
-        php8 \
-        php8-bcmath \
-        php8-curl \
-        php8-dom \
-        php8-exif \
-        php8-gd \
-        php8-iconv \
-        php8-intl \
-        php8-mbstring \
-        php8-pcntl \
-        php8-pdo_mysql \
-        php8-phar \
-        php8-posix \
-        php8-redis \
-        php8-session \
-        php8-xml \
-        php8-zip \
+        php81 \
+        php81-bcmath \
+        php81-curl \
+        php81-dom \
+        php81-exif \
+        php81-gd \
+        php81-iconv \
+        php81-intl \
+        php81-mbstring \
+        php81-pcntl \
+        php81-pdo_mysql \
+        php81-phar \
+        php81-posix \
+        php81-redis \
+        php81-session \
+        php81-xml \
+        php81-zip \
     && rm -rf /var/cache/apk/* \
-    && ln -s /usr/bin/php8 /usr/bin/php
+    && ln -s /usr/bin/php81 /usr/bin/php
 
 # See https://github.com/docker-library/php/issues/240
 ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
