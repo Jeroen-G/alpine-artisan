@@ -19,6 +19,10 @@ RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/co
         php82-session \
         php82-xml \
         php82-zip \
+        php82-tokenizer \
+        php82-fileinfo \
+        php82-xmlwriter \
+        php82-simplexml \
     && rm -rf /var/cache/apk/* \
     && ln -s /usr/bin/php82 /usr/bin/php
 
