@@ -105,8 +105,8 @@ Note: this only runs horizon locally using docker-compose. As soon as you want t
 Clone this repository and run `make` to see which commands are there to help you. every command requires a `TAG=` parameter, which is the Docker image you want to build, for example: `make build TAG=web7.3`.
 
 [link-docker-hub]: https://hub.docker.com/r/jeroeng/alpine-artisan
-[link-actions]: https://github.com/Jeroen-G/alpine-artisan/actions?query=workflow%3ACI%2FCD
+[link-actions]: https://github.com/Jeroen-G/alpine-artisan/actions/workflows/ci.yml
 [ico-pulls]: https://img.shields.io/docker/pulls/jeroeng/alpine-artisan?style=flat-square
 [ico-build]: https://img.shields.io/docker/cloud/build/jeroeng/alpine-artisan?style=flat-square
-[ico-actions]: https://img.shields.io/github/workflow/status/Jeroen-G/alpine-artisan/CI?label=CI%2FCD&style=flat-square
+[ico-actions]: https://img.shields.io/github/actions/status/Jeroen-G/alpine-artisan/ci.yml?label=CI%2FCD&style=flat-square
 [ico-size]: https://img.shields.io/docker/image-size/jeroeng/alpine-artisan?style=flat-square
