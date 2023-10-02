@@ -6,7 +6,7 @@
 A set of lightweight Docker images created with Laravel in mind, but work just as fine for other applications.
 At the basis lies Alpine Linux and the amazing [Docker-Webstack](https://github.com/eXistenZNL/Docker-Webstack) which keeps the images that you pull in very small but usable.
 
-The image sets you up with Alpine Linux, PHP-FPM, Nginx. Currently there is an image for PHP 7.3 7.4 and 8.0 available.
+The image sets you up with Alpine Linux, PHP-FPM, Nginx. Currently there is an image for different PHP versions available.
 
 ## Installation
 In the folder of your application create two files: `docker-compose.yml` and `Dockerfile` (note that the latter has no extension). On the command line, run `docker compose up -d --build` and view your containerized application at `localhost:80`.
@@ -26,7 +26,7 @@ services:
 
 ### Dockerfile
 ```Dockerfile
-FROM jeroeng/alpine-artisan:web7.3
+FROM jeroeng/alpine-artisan:web8.0
 ```
 
 ## Configuration
@@ -100,7 +100,7 @@ services:
 Note: this only runs horizon locally using docker-compose. As soon as you want to host horizon in a container in the cloud, e.g. using kubernetes, you will have to build a separate image.
 
 ## Contributing
-Clone this repository and run `make` to see which commands are there to help you. every command requires a `TAG=` parameter, which is the Docker image you want to build, for example: `make build TAG=web7.3`.
+Clone this repository and run `make` to see which commands are there to help you. every command requires a `TAG=` parameter, which is the Docker image you want to build, for example: `make build TAG=web8.0`.
 
 [link-docker-hub]: https://hub.docker.com/r/jeroeng/alpine-artisan
 [ico-pulls]: https://img.shields.io/docker/pulls/jeroeng/alpine-artisan?style=flat-square
