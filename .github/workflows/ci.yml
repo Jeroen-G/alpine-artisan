@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: [ web8.0, web8.1, web8.2 ]
+        tag: [ web8.0, web8.1, web8.2, web8.3 ]
     env:
       DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
       TAG: ${{ matrix.tag }}
