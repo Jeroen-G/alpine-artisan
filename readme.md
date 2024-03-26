@@ -26,7 +26,7 @@ services:
 
 ### Dockerfile
 ```Dockerfile
-FROM jeroeng/alpine-artisan:web8.0
+FROM jeroeng/alpine-artisan:web8.3
 ```
 
 ## Configuration
