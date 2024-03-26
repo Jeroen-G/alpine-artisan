@@ -13,6 +13,7 @@ RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/co
         php83-mbstring \
         php83-pcntl \
         php83-pdo_mysql \
+        php83-pdo_pgsql \
         php83-phar \
         php83-posix \
         php83-redis \
