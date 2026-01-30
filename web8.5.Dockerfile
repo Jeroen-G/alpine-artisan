@@ -1,4 +1,4 @@
-FROM existenz/webstack:8.5-edge
+FROM existenz/webstack:8.5
 
 RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted gnu-libiconv; \
     apk -U --no-cache add \
@@ -29,7 +29,7 @@ RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/co
     && ln -s /usr/bin/php85 /usr/bin/php
 
 # See https://github.com/docker-library/php/issues/240
-ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
+ENV LD_PRELOAD="/usr/lib/preloadable_libiconv.so php"
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
