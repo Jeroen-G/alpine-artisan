@@ -26,7 +26,7 @@ RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/co
         php85-xmlreader \
         php85-simplexml \
     && rm -rf /var/cache/apk/* \
-    && ln -s /usr/bin/php85 /usr/bin/php
+    && ln -sfn /usr/bin/php85 /usr/bin/php
 
 # See https://github.com/docker-library/php/issues/240
 ENV LD_PRELOAD="/usr/lib/preloadable_libiconv.so php"
