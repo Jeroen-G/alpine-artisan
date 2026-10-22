@@ -14,13 +14,14 @@ jobs:
     name: CI/CD tag
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        tag: [ web8.2, web8.3, web8.4, web8.5 ]
+        tag: [ web8.3, web8.4, web8.5 ]
     env:
       DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
       TAG: ${{ matrix.tag }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Build the Docker image
         run: make build TAG=$TAG
@@ -35,5 +36,5 @@ jobs:
         run: make test TAG=$TAG
 
       - name: Publishing new image
-        if: ${{ success() }}
-        run: docker login -u="jeroeng" -p="$DOCKER_TOKEN" && docker push jeroeng/alpine-artisan:$TAG
+        if: ${{ success() && github.event_name != 'pull_request' }}
+        run: echo "$DOCKER_TOKEN" | docker login -u="jeroeng" --password-stdin && docker push jeroeng/alpine-artisan:$TAG
